@@ -5,6 +5,7 @@ import { entryById } from '@/data/entries'
 import { CopyButton } from './CopyButton'
 import { CameraDiagram } from './CameraDiagram'
 import { useLang, UI, FAMILY_EN, ENTRY_EN } from '@/i18n'
+import { trackHeat } from '@/lib/heat'
 
 interface Props {
   entry: Entry
@@ -34,7 +35,7 @@ function BeatFlow({ beats, keyBeats }: { beats: string[]; keyBeats?: number[] })
   )
 }
 
-export function EntryCard({ entry, inCompose, onCompose, onJump }: Props) {
+export function EntryCard({ entry, inCompose, onCompose, onJump, heatRank }: Props) {
   const lang = useLang()
   const t = UI[lang]
   const en = ENTRY_EN[entry.id]
@@ -56,6 +57,7 @@ export function EntryCard({ entry, inCompose, onCompose, onJump }: Props) {
     if (!el) return
     window.setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300)
     setFlash(true)
+        trackHeat(entry.id, 'view')
     const t = window.setTimeout(() => setFlash(false), 3200)
     return () => window.clearTimeout(t)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,6 +79,7 @@ export function EntryCard({ entry, inCompose, onCompose, onJump }: Props) {
       document.body.removeChild(ta)
     }
     setShared(true)
+      trackHeat(entry.id, 'share')
     window.clearTimeout(timer.current)
     timer.current = window.setTimeout(() => setShared(false), 1600)
   }
@@ -87,6 +90,9 @@ export function EntryCard({ entry, inCompose, onCompose, onJump }: Props) {
         <span>
           {mod?.index} · {(lang === 'en' ? mod?.titleEn : MODULE_LABEL[entry.module])} / {lang === 'en' ? (FAMILY_EN[entry.family] ?? entry.family) : entry.family}
         </span>
+        {heatRank != null && heatRank <= 3 && (
+          <span className="heat-badge">🔥 TOP{heatRank}</span>
+        )}
         <span>{entry.id.toUpperCase()}</span>
       </div>
 

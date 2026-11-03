@@ -1,13 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLang } from '@/i18n'
+import { trackHeat } from '@/lib/heat'
 
 interface Props {
   text: string
   label?: string
   light?: boolean
+  /** 复制成功后上报热度：单条 id 或多条 id（拼搭批量复制） */
+  trackId?: string
+  trackIds?: string[]
 }
 
-export function CopyButton({ text, label, light = false }: Props) {
+export function CopyButton({ text, label, light = false, trackId, trackIds }: Props) {
   const lang = useLang()
   const shown = label ?? (lang === 'en' ? 'Copy' : '复制')
   const [copied, setCopied] = useState(false)
@@ -26,6 +30,8 @@ export function CopyButton({ text, label, light = false }: Props) {
       document.execCommand('copy')
       document.body.removeChild(ta)
     }
+    if (trackId) trackHeat(trackId, 'copy')
+    if (trackIds) trackIds.forEach((id) => trackHeat(id, 'copy'))
     setCopied(true)
     window.clearTimeout(timer.current)
     timer.current = window.setTimeout(() => setCopied(false), 1600)
