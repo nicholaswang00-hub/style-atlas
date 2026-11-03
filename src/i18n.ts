@@ -35,6 +35,13 @@ export const UI: Record<Lang, Record<string, string>> = {
     copyCn: '复制中文速记',
     clear: '清空',
     remove: '移除',
+    share: '↗ 分享词条',
+    shareCopied: '✓ 链接已复制',
+    feedbackTitle: '意见反馈',
+    feedbackDesc: '哪个词条对你最有用？希望增加什么风格？告诉我们。',
+    feedbackSurvey: '填写问卷（微信可开）→',
+    feedbackIssue: 'GitHub Issues →',
+    icpLicense: '沪ICP备2026058359号-1',
   },
   en: {
     vol: 'VOL.07 · Expanded',
@@ -63,6 +70,13 @@ export const UI: Record<Lang, Record<string, string>> = {
     copyCn: 'Copy CN summary',
     clear: 'Clear',
     remove: 'Remove ',
+    share: '↗ Share entry',
+    shareCopied: '✓ Link copied',
+    feedbackTitle: 'Feedback',
+    feedbackDesc: 'Which entry helped you most? What styles should we add? Tell us.',
+    feedbackSurvey: 'Take the survey →',
+    feedbackIssue: 'GitHub Issues →',
+    icpLicense: '沪ICP备2026058359号-1',
   },
 }
 

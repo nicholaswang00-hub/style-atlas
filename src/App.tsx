@@ -209,10 +209,21 @@ function App() {
         </section>
 
         <footer className="colophon">
+          <div className="feedback">
+            <div className="feedback-text">
+              <strong>{t.feedbackTitle}</strong>
+              <span>{t.feedbackDesc}</span>
+            </div>
+            <div className="feedback-links">
+              <a href="https://wj.qq.com/s2/28287493/pv0t/" target="_blank" rel="noreferrer">{t.feedbackSurvey}</a>
+              <a href="https://github.com/nicholaswang00-hub/style-atlas/issues" target="_blank" rel="noreferrer">{t.feedbackIssue}</a>
+            </div>
+          </div>
           <span className="seal">风格图谱</span>
           <span>STYLE ATLAS · 风格图谱</span>
           <span>VOL.07 · {ENTRIES.length} ENTRIES</span>
           <span>{lang === 'zh' ? '示例素材为 AI 生成的风格示意' : 'All samples are AI-generated style references'}</span>
+          <a className="icp" href="https://beian.miit.gov.cn" target="_blank" rel="noreferrer">{t.icpLicense}</a>
         </footer>
       </main>
 
