@@ -543,6 +543,53 @@ body {
   color: var(--cream);
 }
 
+.card-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  appearance: none;
+  align-self: flex-start;
+  border: 1px dashed var(--hairline-strong);
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.share-btn:hover {
+  border-style: solid;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.share-btn.shared {
+  border-style: solid;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+/* 深链接定位高亮 */
+.entry-card.flash {
+  animation: card-flash 3s ease-out;
+}
+
+@keyframes card-flash {
+  0%, 40% {
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
 /* ---------- 叙事节拍 ---------- */
 .beat-flow {
   display: flex;
@@ -782,6 +829,51 @@ body {
   font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--muted);
+}
+
+/* ---------- 意见反馈 ---------- */
+.feedback {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border: 1px solid var(--hairline-strong);
+  background: var(--cream);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+.feedback-text {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.feedback-text strong {
+  font-family: var(--serif);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+.feedback-text span {
+  font-family: var(--serif);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.feedback-links {
+  display: flex;
+  gap: 16px;
+}
+.feedback-links a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.feedback-links a:hover {
+  border-bottom-color: var(--accent);
 }
 
 /* ---------- 底部拼搭栏 ---------- */
@@ -1071,4 +1163,14 @@ body::after {
 
 .compose-bar:not(.open)::before {
   display: none;
+}
+
+.icp {
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+}
+.icp:hover {
+  color: var(--ink);
+  text-decoration: underline;
 }
