@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Entry, ModuleId } from '@/types'
 import { ENTRIES } from '@/data/entries'
+import { fetchHeatRank, type HeatRank } from '@/lib/heat'
 import { FAMILY_ORDER, MODULES } from '@/types'
 import { EntryCard } from '@/components/EntryCard'
 import { ComposeBar, type ComposeState } from '@/components/ComposeBar'
@@ -28,6 +29,8 @@ function useReveal() {
 function App() {
   const [activeModule, setActiveModule] = useState<ModuleId | 'all'>('all')
   const [compose, setCompose] = useState<ComposeState>({})
+  const [heat, setHeat] = useState<HeatRank>({})
+  const [sortByHeat, setSortByHeat] = useState(false)
   const [lang, setLang] = useState<Lang>(() => (localStorage.getItem('atlas-lang') as Lang) || 'zh')
   useReveal()
 
@@ -66,6 +69,22 @@ function App() {
     })
   }
 
+  useEffect(() => {
+    void fetchHeatRank().then((rank) => {
+      if (Object.keys(rank).length) setHeat(rank)
+    })
+  }, [])
+
+  const hotEntries = useMemo(
+    () =>
+      Object.entries(heat)
+        .sort((x, y) => x[1] - y[1])
+        .slice(0, 8)
+        .map(([id]) => ENTRIES.find((en) => en.id === id))
+        .filter((en): en is Entry => Boolean(en)),
+    [heat],
+  )
+
   return (
     <LangContext.Provider value={lang}>
       <header className="masthead">
@@ -100,6 +119,13 @@ function App() {
             {lang === 'en' ? m.titleEn : m.title}
           </button>
         ))}
+        <button
+          type="button"
+          className={`heat-toggle${sortByHeat ? ' active' : ''}`}
+          onClick={() => setSortByHeat((v) => !v)}
+        >
+          {sortByHeat ? t.sortDefault : t.sortHeat}
+        </button>
       </nav>
 
       <main className="page">
@@ -130,6 +156,19 @@ function App() {
           )}
         </section>
 
+        {activeModule === 'all' && hotEntries.length > 0 && (
+          <section className="heat-strip">
+            <h2>{t.heatStrip}</h2>
+            <div className="heat-chips">
+              {hotEntries.map((en) => (
+                <button key={en.id} type="button" className="heat-chip" onClick={() => onJump(en.id)}>
+                  {lang === 'en' && en.titleEn ? en.titleEn : en.title}
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
+
         {visibleModules.map((mod) => {
           const entries = ENTRIES.filter((e) => e.module === mod.id)
           const families = FAMILY_ORDER[mod.id]
@@ -155,13 +194,13 @@ function App() {
                     </span>
                   </div>
                   <div className={`card-grid${mod.id === 'creator' ? ' vertical' : ''}${mod.id === 'visual' ? ' wide' : ''}`}>
-                    {g.list.map((e) => (
+                    {(sortByHeat ? [...g.list].sort((x, y) => (heat[x.id] ?? 9999) - (heat[y.id] ?? 9999)) : g.list).map((e) => (
                       <EntryCard
                         key={e.id}
                         entry={e}
                         inCompose={compose[e.module]?.id === e.id}
                         onCompose={onCompose}
-                        onJump={onJump}
+                        onJump={onJump} heatRank={heat[e.id]}
                       />
                     ))}
                   </div>

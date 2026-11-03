@@ -1174,3 +1174,64 @@ body::after {
   color: var(--ink);
   text-decoration: underline;
 }
+
+/* ── 热度排行 ───────────────────────────── */
+.heat-strip {
+  margin: 2.2rem auto 0;
+  max-width: 1720px;
+  padding: 0 3.4rem;
+}
+.heat-strip h2 {
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  color: var(--accent, #9e3b2b);
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+.heat-chips {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+  scrollbar-width: thin;
+}
+.heat-chip {
+  flex: 0 0 auto;
+  border: 1px solid var(--line, #d8d2c6);
+  background: transparent;
+  color: inherit;
+  font-size: 0.86rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+}
+.heat-chip:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+.heat-badge {
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  color: var(--accent, #9e3b2b);
+  border: 1px solid currentColor;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.heat-toggle {
+  margin-left: auto;
+  border: 1px dashed var(--line, #d8d2c6);
+  background: transparent;
+  color: var(--muted, #8a857c);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  align-self: center;
+}
+.heat-toggle.active {
+  color: var(--accent, #9e3b2b);
+  border-style: solid;
+  border-color: currentColor;
+}
