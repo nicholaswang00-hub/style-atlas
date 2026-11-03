@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import type { Entry, ModuleId } from '@/types'
 import { MODULES } from '@/types'
 import { entryById } from '@/data/entries'
@@ -43,8 +44,47 @@ export function EntryCard({ entry, inCompose, onCompose, onJump }: Props) {
   const tagline = lang === 'en' && en?.tagline ? en.tagline : entry.tagline
   const keywords = lang === 'en' && en?.keywords ? en.keywords : entry.keywords
 
+  const cardRef = useRef<HTMLElement>(null)
+  const [shared, setShared] = useState(false)
+  const [flash, setFlash] = useState(false)
+  const timer = useRef<number | undefined>(undefined)
+
+  // 深链接定位：URL 带 ?entry=词条ID 时滚动到本卡片并高亮
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('entry') !== entry.id) return
+    const el = cardRef.current
+    if (!el) return
+    window.setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300)
+    setFlash(true)
+    const t = window.setTimeout(() => setFlash(false), 3200)
+    return () => window.clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => () => window.clearTimeout(timer.current), [])
+
+  const onShare = async () => {
+    const url = `${window.location.origin}${window.location.pathname}?entry=${entry.id}`
+    const text = lang === 'en'
+      ? `[Style Atlas] ${title} — ${tagline}\n${url}`
+      : `【风格图谱】${title}｜${tagline}\n${url}`
+    try {
+      await navigator.clipboard.writeText(text)
+    } catch {
+      const ta = document.createElement('textarea')
+      ta.value = text
+      document.body.appendChild(ta)
+      ta.select()
+      document.execCommand('copy')
+      document.body.removeChild(ta)
+    }
+    setShared(true)
+    window.clearTimeout(timer.current)
+    timer.current = window.setTimeout(() => setShared(false), 1600)
+  }
+
   return (
-    <article className="entry-card" id={`entry-${entry.id}`}>
+    <article className={`entry-card${flash ? ' flash' : ''}`} id={`entry-${entry.id}`} ref={cardRef}>
       <div className="card-meta">
         <span>
           {mod?.index} · {(lang === 'en' ? mod?.titleEn : MODULE_LABEL[entry.module])} / {lang === 'en' ? (FAMILY_EN[entry.family] ?? entry.family) : entry.family}
@@ -180,13 +220,22 @@ export function EntryCard({ entry, inCompose, onCompose, onJump }: Props) {
           ))}
         </div>
 
-        <button
-          type="button"
-          className={`compose-btn${inCompose ? ' in-compose' : ''}`}
-          onClick={() => onCompose(entry)}
-        >
-          {inCompose ? t.composed : t.compose}
-        </button>
+        <div className="card-actions">
+          <button
+            type="button"
+            className={`compose-btn${inCompose ? ' in-compose' : ''}`}
+            onClick={() => onCompose(entry)}
+          >
+            {inCompose ? t.composed : t.compose}
+          </button>
+          <button
+            type="button"
+            className={`share-btn${shared ? ' shared' : ''}`}
+            onClick={onShare}
+          >
+            {shared ? t.shareCopied : t.share}
+          </button>
+        </div>
       </div>
     </article>
   )
