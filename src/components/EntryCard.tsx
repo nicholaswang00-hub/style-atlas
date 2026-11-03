@@ -65,9 +65,7 @@ export function EntryCard({ entry, inCompose, onCompose, onJump }: Props) {
 
   const onShare = async () => {
     const url = `${window.location.origin}${window.location.pathname}?entry=${entry.id}`
-    const text = lang === 'en'
-      ? `[Style Atlas] ${title} — ${tagline}\n${url}`
-      : `【风格图谱】${title}｜${tagline}\n${url}`
+    const text = url
     try {
       await navigator.clipboard.writeText(text)
     } catch {
