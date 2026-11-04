@@ -84,7 +84,7 @@ export function ComposeBar({ compose, onRemove, onClear }: Props) {
         </div>
 
         <div className="compose-actions">
-          <CopyButton text={`${en}\n\n中文速记：${cn}`} label={t.copyBrief} trackIds={Object.values(compose).filter((e): e is NonNullable<(typeof compose)[string]> => Boolean(e)).map((e) => e.id)} />
+          <CopyButton text={`${en}\n\n中文速记：${cn}`} label={t.copyBrief} trackIds={Object.values(compose).filter((e): e is Entry => Boolean(e)).map((e) => e.id)} />
           <CopyButton text={cn} label={t.copyCn} />
           <button type="button" className="copy-btn" onClick={onClear}>
             {t.clear}
