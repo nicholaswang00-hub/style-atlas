@@ -12,6 +12,7 @@ interface Props {
   inCompose: boolean
   onCompose: (entry: Entry) => void
   onJump: (id: string) => void
+  heatRank?: number
 }
 
 const MODULE_LABEL: Record<ModuleId, string> = {
