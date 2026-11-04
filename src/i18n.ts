@@ -42,9 +42,6 @@ export const UI: Record<Lang, Record<string, string>> = {
     feedbackSurvey: '填写问卷（微信可开）→',
     feedbackIssue: 'GitHub Issues →',
     icpLicense: '沪ICP备2026058359号-1',
-    heatStrip: 'Trending',
-    sortHeat: 'By heat',
-    sortDefault: 'Default',
     heatStrip: '本周热门',
     sortHeat: '按热度',
     sortDefault: '默认排序',
@@ -83,6 +80,9 @@ export const UI: Record<Lang, Record<string, string>> = {
     feedbackSurvey: 'Take the survey →',
     feedbackIssue: 'GitHub Issues →',
     icpLicense: '沪ICP备2026058359号-1',
+    heatStrip: 'Trending this week',
+    sortHeat: 'By heat',
+    sortDefault: 'Default',
   },
 }
 
