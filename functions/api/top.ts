@@ -2,7 +2,7 @@
 interface KVNS {
   get(key: string): Promise<string | null>
   put(key: string, value: string): Promise<void>
-  list(): Promise<unknown>
+  list(prefix?: string): Promise<unknown>
 }
 declare const HEAT: KVNS
 
@@ -19,7 +19,7 @@ export const onRequestOptions = async () => new Response(null, { headers: cors }
 
 export const onRequestGet = async () => {
   try {
-    const listed = (await HEAT.list()) as { keys?: { name: string }[] }
+    const listed = (await HEAT.list('')) as { keys?: { name: string }[] }
     const names = (listed?.keys ?? []).map((k) => k.name)
     const sample = names.length ? await HEAT.get(names[0]) : null
     return json({ debug: true, rawType: typeof listed, names, sample, raw: listed })
