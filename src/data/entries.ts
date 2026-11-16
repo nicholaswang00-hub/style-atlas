@@ -1492,7 +1492,7 @@ export const ENTRIES: Entry[] = [
   /* ================= 06 色彩与光影 · 经典配色 ================= */
   {
     id: 'c-morandi',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '莫兰迪色系',
     titleEn: 'Morandi Palette',
@@ -1521,7 +1521,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-macaron',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '马卡龙色系',
     titleEn: 'Macaron Pastels',
@@ -1534,7 +1534,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-dunhuang',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '敦煌配色',
     titleEn: 'Dunhuang Mural Palette',
@@ -1547,7 +1547,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-bluewhite',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '青花蓝白',
     titleEn: 'Blue-and-White Porcelain',
@@ -1560,7 +1560,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-monet',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '莫奈光影',
     titleEn: 'Monet Impressionist Light',
@@ -1573,7 +1573,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-blackgold',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '黑金奢华',
     titleEn: 'Black & Gold Luxury',
@@ -1586,7 +1586,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-earth',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '大地色系',
     titleEn: 'Earth Tones',
@@ -1599,7 +1599,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-neon',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '赛博霓虹',
     titleEn: 'Cyber Neon',
@@ -1612,7 +1612,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-cream',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '奶油色系',
     titleEn: 'Cream & Beige',
@@ -1625,7 +1625,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-klein',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '克莱因蓝',
     titleEn: 'Klein Blue',
@@ -1638,7 +1638,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-mondrian',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '蒙德里安三原色',
     titleEn: 'Mondrian Primaries',
@@ -1651,7 +1651,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-wabisabi',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '侘寂色系',
     titleEn: 'Wabi-Sabi Neutrals',
@@ -1664,7 +1664,7 @@ export const ENTRIES: Entry[] = [
   },
   {
     id: 'c-candy',
-    module: 'color',
+    module: 'visual',
     family: '经典配色',
     title: '糖果色系',
     titleEn: 'Candy Pop Colors',
