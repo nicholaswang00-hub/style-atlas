@@ -10,7 +10,7 @@ export const useLang = () => useContext(LangContext)
 export const UI: Record<Lang, Record<string, string>> = {
   zh: {
     vol: 'VOL.07 · 扩充版',
-    countSuffix: '词条 / 7 模块',
+    countSuffix: '词条 / 6 模块',
     tag: '创作对齐参考库',
     navAll: '全部',
     familyCount: '条',
@@ -48,7 +48,7 @@ export const UI: Record<Lang, Record<string, string>> = {
   },
   en: {
     vol: 'VOL.07 · Expanded',
-    countSuffix: 'entries · 7 modules',
+    countSuffix: 'entries · 6 modules',
     tag: 'A Creative Alignment Reference',
     navAll: 'All',
     familyCount: '',
@@ -126,8 +126,6 @@ export const MODULE_DESC_EN: Record<ModuleId, string> = {
     'Each genre = a playable 20-second AI sample + Suno-style tags. For aligning on the “feel”, not for final use.',
   creator:
     'Short-video creator personas and content formulas in 9:16. Each entry carries a copy-ready script formula: hook placement, cut timing, caption style.',
-  color:
-    'Each palette = a sample image + copy-ready English prompt + negative prompt + keywords. Lock the color mood first, then talk style.',
   type:
     'Each typography school = a specimen + copy-ready English prompt + negative prompt + keywords. Align poster, cover and web layouts here first.',
 }
@@ -138,7 +136,6 @@ export const COMPOSE_LABEL_EN: Record<ModuleId, string> = {
   narrative: 'Story',
   music: 'Music',
   creator: 'Persona',
-  color: 'Color',
   type: 'Typography',
 }
 
