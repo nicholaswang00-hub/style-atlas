@@ -1,4 +1,4 @@
-export type ModuleId = 'visual' | 'camera' | 'narrative' | 'music' | 'creator' | 'color' | 'type'
+export type ModuleId = 'visual' | 'camera' | 'narrative' | 'music' | 'creator' | 'type'
 
 export type DiagramKind =
   | 'orbit'
@@ -110,16 +110,8 @@ export const MODULES: ModuleInfo[] = [
     composeLabel: '人设',
   },
   {
-    id: 'color',
-    index: '06',
-    title: '色彩与光影',
-    titleEn: 'Color & Light',
-    desc: '每种配色 = 示例图 + 可直接复制的英文提示词 + 负面提示词 + 中文关键词。先定色调，再谈风格。',
-    composeLabel: '色彩',
-  },
-  {
     id: 'type',
-    index: '07',
+    index: '06',
     title: '字体与排版',
     titleEn: 'Typography & Layout',
     desc: '每种排版流派 = 样张 + 可直接复制的英文提示词 + 负面提示词 + 中文关键词。海报、封面、网页排版先在这里对齐。',
@@ -128,11 +120,10 @@ export const MODULES: ModuleInfo[] = [
 ]
 
 export const FAMILY_ORDER: Record<ModuleId, string[]> = {
-  visual: ['手绘动画', '绘画质感', '经典设计', '摄影与电影', '数字与科幻'],
+  visual: ['手绘动画', '绘画质感', '经典设计', '摄影与电影', '数字与科幻', '经典配色'],
   camera: ['景别', '角度', '运镜', '时间与特效', '构图', '组合运镜'],
   narrative: ['经典骨架', '时间结构', '伏笔与悬念', '视角与声音'],
   music: ['古典与舞曲', '爵士家族', '电子', '民族与世界', '氛围'],
   creator: ['人设口播', '形式套路'],
-  color: ['经典配色'],
   type: ['排版流派'],
 }
