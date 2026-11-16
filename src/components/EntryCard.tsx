@@ -21,6 +21,8 @@ const MODULE_LABEL: Record<ModuleId, string> = {
   narrative: '叙事结构',
   music: '音乐风格',
   creator: '博主风格',
+  color: '色彩与光影',
+  type: '字体与排版',
 }
 
 function BeatFlow({ beats, keyBeats }: { beats: string[]; keyBeats?: number[] }) {
