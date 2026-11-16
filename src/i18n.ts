@@ -10,7 +10,7 @@ export const useLang = () => useContext(LangContext)
 export const UI: Record<Lang, Record<string, string>> = {
   zh: {
     vol: 'VOL.07 · 扩充版',
-    countSuffix: '词条 / 5 模块',
+    countSuffix: '词条 / 7 模块',
     tag: '创作对齐参考库',
     navAll: '全部',
     familyCount: '条',
@@ -48,7 +48,7 @@ export const UI: Record<Lang, Record<string, string>> = {
   },
   en: {
     vol: 'VOL.07 · Expanded',
-    countSuffix: 'entries · 5 modules',
+    countSuffix: 'entries · 7 modules',
     tag: 'A Creative Alignment Reference',
     navAll: 'All',
     familyCount: '',
@@ -110,6 +110,8 @@ export const FAMILY_EN: Record<string, string> = {
   氛围: 'Ambient',
   人设口播: 'Personas',
   形式套路: 'Format Formulas',
+  经典配色: 'Classic Palettes',
+  排版流派: 'Typography Styles',
 }
 
 /* ---------- 模块描述与拼搭标签 ---------- */
@@ -124,6 +126,10 @@ export const MODULE_DESC_EN: Record<ModuleId, string> = {
     'Each genre = a playable 20-second AI sample + Suno-style tags. For aligning on the “feel”, not for final use.',
   creator:
     'Short-video creator personas and content formulas in 9:16. Each entry carries a copy-ready script formula: hook placement, cut timing, caption style.',
+  color:
+    'Each palette = a sample image + copy-ready English prompt + negative prompt + keywords. Lock the color mood first, then talk style.',
+  type:
+    'Each typography school = a specimen + copy-ready English prompt + negative prompt + keywords. Align poster, cover and web layouts here first.',
 }
 
 export const COMPOSE_LABEL_EN: Record<ModuleId, string> = {
@@ -132,10 +138,118 @@ export const COMPOSE_LABEL_EN: Record<ModuleId, string> = {
   narrative: 'Story',
   music: 'Music',
   creator: 'Persona',
+  color: 'Color',
+  type: 'Typography',
 }
 
-/* ---------- 102 条词条英文短字段（第一期：点评 + 关键词） ---------- */
+/* ---------- 词条英文短字段（第一期：点评 + 关键词） ---------- */
 export const ENTRY_EN: Record<string, { tagline?: string; keywords?: string[] }> = {
+  /* ===== 06 色彩与光影 ===== */
+  'c-morandi': {
+    tagline: 'The king of muted palettes: pinks, greens and beiges veiled in a grey haze — quiet, premium, works for interiors and portraits alike.',
+    keywords: ['muted tones', 'dusty palette', 'grey haze', 'matte texture', 'quiet elegance'],
+  },
+  /* ===== 07 字体与排版 ===== */
+  't-neobrut': {
+    tagline: 'Thick black outlines + saturated color clashes + hard shadows — deliberately raw and punchy, the current darling of posters and web design.',
+    keywords: ['neo-brutalism', 'thick outlines', 'color clash', 'hard shadows', 'bold typography'],
+  },
+  'c-macaron': {
+    tagline: 'Sweeter than Morandi: cherry-blossom pink, mint, pale yellow and lavender — the go-to base for girly and bakery visuals.',
+    keywords: ['pastel', 'macaron tones', 'sweet', 'light colors', 'dreamy'],
+  },
+  'c-dunhuang': {
+    tagline: 'Stone green, ochre, vermilion and faded gold straight from the Mogao murals — a thousand years of refined oriental color clash.',
+    keywords: ['mineral tones', 'ochre', 'vermilion', 'chinoiserie', 'fresco'],
+  },
+  'c-bluewhite': {
+    tagline: 'One blue plus one white: the cobalt-and-blank aesthetics of blue-and-white porcelain — the ancestor of oriental minimalism.',
+    keywords: ['cobalt blue', 'white space', 'oriental minimal', 'porcelain', 'elegant'],
+  },
+  'c-monet': {
+    tagline: 'Painting light, not things: lavender shadows, broken golden sunlight and airy blue-greens — the fleeting palette of Impressionism.',
+    keywords: ['impressionist', 'dappled light', 'lavender shadows', 'broken color', 'luminous'],
+  },
+  'c-blackgold': {
+    tagline: 'Matte black with touches of gold leaf: the premium formula for real-estate, finance and gala posters — less gold, more class.',
+    keywords: ['black and gold', 'luxury', 'gold accents', 'premium', 'dark elegance'],
+  },
+  'c-earth': {
+    tagline: 'Camel, caramel, olive and terracotta: the safe bet for outdoor brands and autumn wardrobes — warm, reliable, flattering.',
+    keywords: ['earth tones', 'camel', 'terracotta', 'autumn', 'outdoor'],
+  },
+  'c-neon': {
+    tagline: 'Magenta plus cyan on deep purple-black: the standard formula of cyberpunk nights — it only works on a dark base.',
+    keywords: ['cyberpunk', 'neon', 'magenta', 'cyan', 'night glow'],
+  },
+  'c-cream': {
+    tagline: 'Milky white, oatmeal and light camel: a warm ladder of off-whites for home, wedding and skincare — softer than pure white.',
+    keywords: ['cream', 'beige', 'oatmeal', 'warm white', 'gentle'],
+  },
+  'c-klein': {
+    tagline: 'One blue built a brand: absolute pure International Klein Blue — a vast monochrome field is already a poster.',
+    keywords: ['Klein blue', 'IKB', 'monochrome', 'avant-garde', 'single color'],
+  },
+  'c-mondrian': {
+    tagline: 'Red, yellow, blue plus black lines on white: modernism in a grid — the first lesson of design and the ultimate order.',
+    keywords: ['Mondrian', 'primaries', 'grid', 'De Stijl', 'geometry'],
+  },
+  'c-wabisabi': {
+    tagline: 'A faded world of ash grey, clay, moss and weathered wood: the aesthetics of imperfection — the palette of tea rooms and zen spaces.',
+    keywords: ['wabi-sabi', 'muted', 'patina', 'zen', 'imperfection'],
+  },
+  'c-candy': {
+    tagline: 'Saturated sweetness: bubblegum pink, bright orange and icy blue clashing boldly — the energy source of snack, toy and variety-show visuals.',
+    keywords: ['candy colors', 'high saturation', 'color clash', 'playful', 'vibrant'],
+  },
+  't-construct': {
+    tagline: 'Red-black diagonals, photomontage and roaring slogan type: the propaganda-poster aesthetics that turns layout into a weapon.',
+    keywords: ['constructivism', 'red black', 'diagonal', 'photomontage', 'propaganda'],
+  },
+  't-editorial': {
+    tagline: 'Multi-column grids, kickers and pull quotes: the full craft chain of magazine typesetting — the orderliness of long-form content.',
+    keywords: ['editorial', 'multi-column', 'pull quote', 'grid', 'magazine'],
+  },
+  't-pixel': {
+    tagline: '8-bit pixel type plus a retro game palette: every letter countable in pixels — digital nostalgia in print form.',
+    keywords: ['pixel', '8-bit', 'retro gaming', 'bitmap', 'nostalgic'],
+  },
+  't-slab': {
+    tagline: 'Heavy slab-serif display letters with enamel-sign texture: the lettering of the American West — every glyph looks chiseled.',
+    keywords: ['slab serif', 'signage', 'american', 'western', 'rustic'],
+  },
+  't-acid': {
+    tagline: 'Chrome liquid type, gradient meshes and warped grids: the niche Gen-Z aesthetics beloved by music labels and streetwear brands.',
+    keywords: ['acid design', 'Y2K', 'chrome', 'liquid type', 'subculture'],
+  },
+  't-jeditorial': {
+    tagline: 'Vertical mixed with horizontal columns, full-bleed photos sliced into bands, tiny ruby annotations: the breathing rhythm of Tokyo street magazines.',
+    keywords: ['japanese editorial', 'vertical text', 'magazine', 'ruby text', 'breathing space'],
+  },
+  't-typewriter': {
+    tagline: 'Monospace letters with uneven ink, black-and-red ribbon text, stained and creased paper: the atmosphere machine for writers and detective stories.',
+    keywords: ['typewriter', 'manuscript', 'monospace', 'vintage', 'noir'],
+  },
+  't-handletter': {
+    tagline: 'Marker-pen letters, arrow sticky notes and little doodles: an unguarded notebook honesty that maximizes cover-photo approachability.',
+    keywords: ['hand-lettering', 'doodle', 'marker', 'sticky notes', 'friendly'],
+  },
+  't-deconstruct': {
+    tagline: 'Tear the grid apart: tilted, stacked, bleeding typography out of control — the sharp weapon of architecture and avant-garde fashion posters.',
+    keywords: ['deconstructivism', 'fractured grid', 'tilted', 'stacked', 'chaos'],
+  },
+  't-blackletter': {
+    tagline: 'The heavy-metal bloodline of Fraktur: church manuscripts and band logos share the same alphabet.',
+    keywords: ['blackletter', 'gothic', 'metal', 'medieval', 'ornate'],
+  },
+  't-cnvertical': {
+    tagline: 'Vertical Chinese columns, a big red seal and generous blank: ancient book layout meets the modern poster — the contemporary oriental narrative.',
+    keywords: ['vertical text', 'chinese characters', 'seal stamp', 'oriental', 'modern classic'],
+  },
+  't-grunge': {
+    tagline: 'Dirty ink, misregistered photocopies and torn edges: the raw authenticity of underground zines — rebellion needs no polish.',
+    keywords: ['grunge', 'xerox', 'punk zine', 'distressed', 'DIY'],
+  },
   /* ===== 画面风格 ===== */
   'v-ghibli': {
     tagline: 'The synonym for hand-painted anime backgrounds: watercolor nature, gentle light, healing pastoral.',
