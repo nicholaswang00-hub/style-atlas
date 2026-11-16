@@ -1,4 +1,4 @@
-export type ModuleId = 'visual' | 'camera' | 'narrative' | 'music' | 'creator'
+export type ModuleId = 'visual' | 'camera' | 'narrative' | 'music' | 'creator' | 'color' | 'type'
 
 export type DiagramKind =
   | 'orbit'
@@ -109,6 +109,22 @@ export const MODULES: ModuleInfo[] = [
     desc: '短视频博主的人设与内容公式，9:16 竖屏呈现。每条带可直接复制的中文脚本公式：钩子怎么埋、几秒切屏、字幕怎么打。',
     composeLabel: '人设',
   },
+  {
+    id: 'color',
+    index: '06',
+    title: '色彩与光影',
+    titleEn: 'Color & Light',
+    desc: '每种配色 = 示例图 + 可直接复制的英文提示词 + 负面提示词 + 中文关键词。先定色调，再谈风格。',
+    composeLabel: '色彩',
+  },
+  {
+    id: 'type',
+    index: '07',
+    title: '字体与排版',
+    titleEn: 'Typography & Layout',
+    desc: '每种排版流派 = 样张 + 可直接复制的英文提示词 + 负面提示词 + 中文关键词。海报、封面、网页排版先在这里对齐。',
+    composeLabel: '排版',
+  },
 ]
 
 export const FAMILY_ORDER: Record<ModuleId, string[]> = {
@@ -117,4 +133,6 @@ export const FAMILY_ORDER: Record<ModuleId, string[]> = {
   narrative: ['经典骨架', '时间结构', '伏笔与悬念', '视角与声音'],
   music: ['古典与舞曲', '爵士家族', '电子', '民族与世界', '氛围'],
   creator: ['人设口播', '形式套路'],
+  color: ['经典配色'],
+  type: ['排版流派'],
 }
