@@ -138,7 +138,7 @@ function App() {
               </p>
               <div className="intro-note">
                 <p>画面看图 · 镜头看动画 · 叙事看节拍 · 音乐听样 · 人设抄公式。</p>
-                <p>点任意卡片「＋拼搭」，底部拼搭栏会把五个模块的选择自动拼成一份完整创作简报。</p>
+                <p>点任意卡片「＋拼搭」，底部拼搭栏会把六个模块的选择自动拼成一份完整创作简报。</p>
               </div>
             </>
           ) : (
@@ -150,7 +150,7 @@ function App() {
               </p>
               <div className="intro-note">
                 <p>Visuals by image · camera by animation · story by beats · music by sample · personas by formula.</p>
-                <p>Tap “＋ Add to brief” on any card and the bottom bar assembles your five picks into a complete creative brief.</p>
+                <p>Tap “＋ Add to brief” on any card and the bottom bar assembles your six picks into a complete creative brief.</p>
               </div>
             </>
           )}
